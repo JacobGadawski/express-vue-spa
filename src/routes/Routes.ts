@@ -4,24 +4,27 @@ import AuthController from '../controllers/AuthController';
 import IndexController from '../controllers/IndexController';
 import { authenticate } from '../auth/auth';
 import MailController from '../controllers/MailController';
+import LoginController from '../controllers/auth/LoginController';
 
 class ApiRoutes {
     public router: Router
-    private postController: PostController
-    private authController: AuthController
-    private indexController: IndexController
-    private mailController: MailController
+    private _postController: PostController
+    private _authController: AuthController
+    private _loginController: LoginController
+    private _indexController: IndexController
+    private _mailController: MailController
     constructor(){
         this.router = Router()
-        this.postController = new PostController()
-        this.authController = new AuthController()
-        this.indexController = new IndexController()
-        this.mailController = new MailController()
+        this._postController = new PostController()
+        this._authController = new AuthController()
+        this._loginController = new LoginController()
+        this._indexController = new IndexController()
+        this._mailController = new MailController()
         this.setRoutes()
     }
     private setRoutes(): void{
         //auth routes
-        this.router.post('/api/login', this.authController.login())
+        this.router.post('/api/login', this._loginController.login())
         // this.router.post('/api/register', this.authController.register())
         
         //user routes
@@ -30,13 +33,13 @@ class ApiRoutes {
         })
 
         //posts routes
-        this.router.get('/api/posts', this.postController.getAll() )
-        this.router.post('/api/post', this.postController.save() )
+        this.router.get('/api/posts', this._postController.getAll() )
+        this.router.post('/api/post', this._postController.save() )
 
         //test
-        this.router.post('/api/mail', this.mailController.send() )
+        this.router.post('/api/mail', this._mailController.send() )
         //view
-        this.router.get('*', this.indexController.show())
+        this.router.get('*', this._indexController.show())
     }
 }
 
