@@ -5,6 +5,7 @@ import IndexController from '../controllers/IndexController';
 import { authenticate } from '../auth/auth';
 import MailController from '../controllers/MailController';
 import LoginController from '../controllers/auth/LoginController';
+import RegisterController from '../controllers/auth/RegisterController';
 
 class ApiRoutes {
     public router: Router
@@ -13,6 +14,7 @@ class ApiRoutes {
     private _loginController: LoginController
     private _indexController: IndexController
     private _mailController: MailController
+    private _registerController: RegisterController
     constructor(){
         this.router = Router()
         this._postController = new PostController()
@@ -20,12 +22,13 @@ class ApiRoutes {
         this._loginController = new LoginController()
         this._indexController = new IndexController()
         this._mailController = new MailController()
+        this._registerController = new RegisterController()
         this.setRoutes()
     }
     private setRoutes(): void{
         //auth routes
         this.router.post('/api/login', this._loginController.login())
-        // this.router.post('/api/register', this.authController.register())
+        this.router.post('/api/register', this._registerController.register())
         
         //user routes
         this.router.get('/api/user', authenticate() , (req: Request, res: Response ,next: NextFunction ) => {
