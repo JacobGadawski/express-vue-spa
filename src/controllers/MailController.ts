@@ -12,7 +12,7 @@ class MailController{
     public send(): RequestHandler{
         return async ( req: Request, res: Response, next: NextFunction ): Promise<void> => {
             try {
-                return await this._mailService.sendMail('jacobgadawski94@gmail.com', 'temat', 'tresc wiadomosci z node')
+                return await this._mailService.sendMail('test@test.pl', 'temat', 'tresc wiadomosci z node')
             } catch (error) {
                 throw error
             }

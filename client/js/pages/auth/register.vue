@@ -84,7 +84,7 @@ export default {
     async register () {
       // Register the user.
       const { data } = await this.form.post('/api/register')
-
+      console.log( 'register data', data );
       // Log in the user.
       const { data: { token } } = await this.form.post('/api/login')
 

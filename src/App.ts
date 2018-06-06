@@ -18,7 +18,7 @@ class App {
         this.app.engine('.hbs', exphbs({ extname: 'hbs'}));
         this.app.set('view engine', '.hbs')
         this.app.set('views', path.join(__dirname, '../views'))
-        this.app.use( express.json() )
+        this.app.use( express.json() ) 
         this.app.use( express.urlencoded({ extended: false }) )
         this.app.use( express.static( 'public' ) )
         this.app.use( initialize() )

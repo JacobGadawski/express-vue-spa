@@ -14,9 +14,9 @@ class UserRepository{
             throw error
         }
     }
-    public async save( user: IUserModel ): Promise<IUserModel>{
+    public async save( userData ): Promise<IUserModel>{
         try {
-            return await this.user.create( user )
+            return await this.user.create( userData )
         } catch (error) {
             throw error
         }

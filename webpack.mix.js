@@ -6,7 +6,9 @@ mix.config.vue.esModule = true
 
 mix
   .js('client/js/app.js', 'js')
+  .js('admin/js/admin.js', 'js')
   .sass('client/sass/app.scss', 'css')
+  .sass('admin/sass/admin.scss', 'css')
   .sourceMaps()
   .disableNotifications()
 
